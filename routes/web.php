@@ -32,6 +32,14 @@ Route::get('/regist', function () {
     ]);
 })->name('regist');
 
+Route::get('/new-regist', function () {
+    return Inertia::render('Welcome');
+})->name('new-regist');
+
+Route::get('/user', function () {
+    return Inertia::render('User');
+})->name('user');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
