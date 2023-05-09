@@ -9,8 +9,8 @@ function SideMenu({ className = '', children, ...props }) {
 
     return (
         <>
-            <div className="">
-                <img src={src} alr="example" />
+            <div className="flex items-center">
+                <img src={src} alr="example" /><p>本間由樹</p>
             </div>
         </>
     );
