@@ -40,6 +40,22 @@ Route::get('/user', function () {
     return Inertia::render('User');
 })->name('user');
 
+Route::get('my-posts', function() {
+    return [
+            'data' => [
+                'message'=>'これは自分の投稿一覧です'
+            ]
+        ];
+});
+
+Route::get('like-lists', function() {
+    return [
+            'data' => [
+                'message'=>'これは自分の投稿一覧です'
+            ]
+        ];
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
