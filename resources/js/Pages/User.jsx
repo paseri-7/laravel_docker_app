@@ -3,8 +3,11 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import Modal from '@/Components/Modal';
 import SideMenu from '@/Components/SideMenu';
 import { useState, useEffect } from 'react';
+import Tab from '@/Components/Tab';
 
 function User({ auth }) {
+
+    const profileIcon = '/img/account.png';
     // モーダル表示/非表示フラグ
     const [modalFlg, setModalFlg] = useState(false);
 
@@ -18,9 +21,34 @@ function User({ auth }) {
 
     return (
         <>
-            <h1>ユーザー管理画面</h1>
-            <SideMenu></SideMenu>
-            <button onClick={() => showModal()}>
+            <div className="flex">
+                <SideMenu></SideMenu>
+                <div className="w-3/4">
+                    <div className="w-3/4 mx-auto">
+                        <div className="flex justify-between h-36">
+                            <div className="flex items-center">
+                                <img src={profileIcon} className="w-32 h-32" alt="example" />
+                                <p className="ml-12 text-2xl">本間由樹</p>
+                            </div>
+                            <div className="flex items-center mr-20">
+                                <button className="tracking-widest scale-x-110 text-lg text-blue-500 px-4 h-12 border border-blue-500 rounded-3xl">
+                                    プロフィールを編集
+                                </button>
+                            </div>
+                        </div>
+                        <div className="w-3/4 ml-20 mt-4">
+                            <p className="">
+                                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                            </p>
+                        </div>
+                    </div>
+                        <Tab></Tab>
+                </div>
+            </div>
+
+            {/* <button onClick={() => showModal()}>
                 Show Modal
             </button>
             <Modal show={modalFlg} maxWidth="sm" onClose={() => console.log('モーダルを閉じました。')}>
@@ -31,7 +59,7 @@ function User({ auth }) {
                         ボタン
                     </button>
                 </div>
-            </Modal>
+            </Modal> */}
         </>
     );
 }
