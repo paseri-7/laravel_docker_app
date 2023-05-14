@@ -2,7 +2,7 @@ import { Link, Head } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import {useImage} from 'react-image';
 
-function Content({ className = '', children, ...props }) {
+function Content({ className = '', post, children, ...props }) {
 
     const profileIcon = '/img/account.png';
     const postImage = '/img/bird.png';
