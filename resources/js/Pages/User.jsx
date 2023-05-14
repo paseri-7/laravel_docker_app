@@ -3,13 +3,14 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import Modal from '@/Components/Modal';
 import SideMenu from '@/Components/SideMenu';
 import { useState, useEffect } from 'react';
-import Tab from '@/Components/Tab';
+import Content from '@/Components/Content';
 
 function User({ auth }) {
 
     const profileIcon = '/img/account.png';
     // モーダル表示/非表示フラグ
     const [modalFlg, setModalFlg] = useState(false);
+    const [activeTab, setActiveTab] = useState('posts');
 
     function showModal() {
         if(!modalFlg) {
@@ -44,7 +45,17 @@ function User({ auth }) {
                             </p>
                         </div>
                     </div>
-                        <Tab></Tab>
+                    <div className="mt-20 mb-10 w-1/2 mx-auto flex justify-between">
+                        <div className={`${activeTab === 'likes' ? 'border-b-2 border-blue-500' : ''}`}>
+                            <button onClick={() => setActiveTab('likes')}>自分の投稿</button>
+                        </div>
+                        <div className={`mr-12 ${activeTab === 'posts' ? 'border-b-2 border-blue-500' : ''}`}>
+                            <button onClick={() => setActiveTab('posts')}>いいね一覧</button>
+                        </div>
+                    </div>
+                    <Content></Content>
+                    <Content></Content>
+                    <Content></Content>
                 </div>
             </div>
 
