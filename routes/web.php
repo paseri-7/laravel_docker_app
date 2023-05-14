@@ -16,6 +16,7 @@ use Inertia\Inertia;
 |
 */
 
+//ログイン画面
 Route::get('/', function () {
     return Inertia::render('Welcome');
 });
@@ -24,10 +25,11 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//ユーザ新規登録画面
 Route::get('/regist', function () {
-    return Inertia::render('Regist',[
-        'data'=>[
-            'message'=>'これはJSON形式です。',
+    return Inertia::render('Regist', [
+        'data' => [
+            'message' => 'これはJSON形式です。',
         ],
     ]);
 })->name('regist');
@@ -36,24 +38,33 @@ Route::get('/new-regist', function () {
     return Inertia::render('Welcome');
 })->name('new-regist');
 
-Route::get('/user', function () {
+//投稿一覧画面
+Route::get('/post_list', function () {
     return Inertia::render('PostList');
+})->name('post_list');
+
+Route::get('/user', function () {
+    return Inertia::render('User');
 })->name('user');
 
-Route::get('my-posts', function() {
+Route::get('/user_edit', function () {
+    return Inertia::render('User_edit');
+})->name('user_edit');
+
+Route::get('my-posts', function () {
     return [
-            'data' => [
-                'message'=>'これは自分の投稿一覧です'
-            ]
-        ];
+        'data' => [
+            'message' => 'これは自分の投稿一覧です'
+        ]
+    ];
 });
 
-Route::get('like-lists', function() {
+Route::get('like-lists', function () {
     return [
-            'data' => [
-                'message'=>'これは自分の投稿一覧です'
-            ]
-        ];
+        'data' => [
+            'message' => 'これは自分の投稿一覧です'
+        ]
+    ];
 });
 
 Route::middleware('auth')->group(function () {
@@ -62,4 +73,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
