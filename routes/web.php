@@ -37,7 +37,7 @@ Route::get('/new-regist', function () {
 })->name('new-regist');
 
 Route::get('/user', function () {
-    return Inertia::render('User');
+    return Inertia::render('PostList');
 })->name('user');
 
 Route::get('my-posts', function() {

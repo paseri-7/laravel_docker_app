@@ -25,7 +25,7 @@ function User({ auth }) {
             <div className="flex">
                 <SideMenu></SideMenu>
                 <div className="w-3/4">
-                    <div className="w-3/4 mx-auto">
+                    <div className="w-3/4 ml-20 mr-auto">
                         <div className="flex justify-between h-36">
                             <div className="flex items-center">
                                 <img src={profileIcon} className="w-32 h-32" alt="example" />
@@ -45,12 +45,12 @@ function User({ auth }) {
                             </p>
                         </div>
                     </div>
-                    <div className="mt-20 mb-10 w-1/2 mx-auto flex justify-between">
-                        <div className={`${activeTab === 'likes' ? 'border-b-2 border-blue-500' : ''}`}>
-                            <button onClick={() => setActiveTab('likes')}>自分の投稿</button>
+                    <div className="mt-20 mb-10 w-1/2 ml-40 mr-auto flex justify-between">
+                        <div className={`${activeTab === 'likes' ? 'border-b-4 border-blue-500' : ''}`}>
+                            <button className="text-xl" onClick={() => setActiveTab('likes')}>自分の投稿</button>
                         </div>
-                        <div className={`mr-12 ${activeTab === 'posts' ? 'border-b-2 border-blue-500' : ''}`}>
-                            <button onClick={() => setActiveTab('posts')}>いいね一覧</button>
+                        <div className={`mr-12 ${activeTab === 'posts' ? 'border-b-4 border-blue-500' : ''}`}>
+                            <button className="text-xl" onClick={() => setActiveTab('posts')}>いいね一覧</button>
                         </div>
                     </div>
                     <Content></Content>
