@@ -25,7 +25,7 @@ function SideMenu({ className = "", children, ...props }) {
                     <ul className="space-y-1">
                         <li className="block p-2 hover:bg-gray-200 rounded-md">
                             <Link
-                                href="/post_list"
+                                href={route("/")}
                                 className="flex items-center"
                             >
                                 <img
@@ -47,7 +47,11 @@ function SideMenu({ className = "", children, ...props }) {
                             </Link>
                         </li>
                         <li className="block p-2 hover:bg-gray-200 rounded-md">
-                            <Link href="/logout" className="flex items-center">
+                            <Link
+                                href={route("logout")}
+                                method="post"
+                                className="flex items-center"
+                            >
                                 <img
                                     src={logoutIcon}
                                     className="w-10"
