@@ -1,21 +1,20 @@
-import { Link, Head } from '@inertiajs/react';
-import PrimaryButton from '@/Components/PrimaryButton';
-import Modal from '@/Components/Modal';
-import SideMenu from '@/Components/SideMenu';
-import { useState, useEffect } from 'react';
-import Content from '@/Components/Content';
+import { Link, Head } from "@inertiajs/react";
+import PrimaryButton from "@/Components/PrimaryButton";
+import Modal from "@/Components/Modal";
+import SideMenu from "@/Components/SideMenu";
+import { useState, useEffect } from "react";
+import Content from "@/Components/Content";
 
 function User({ auth }) {
-
-    const profileIcon = '/img/account.png';
+    const profileIcon = "/img/account.png";
     // モーダル表示/非表示フラグ
     const [modalFlg, setModalFlg] = useState(false);
-    const [activeTab, setActiveTab] = useState('posts');
+    const [activeTab, setActiveTab] = useState("posts");
 
     function showModal() {
-        if(!modalFlg) {
+        if (!modalFlg) {
             setModalFlg(true);
-        }else {
+        } else {
             setModalFlg(false);
         }
     }
@@ -28,13 +27,19 @@ function User({ auth }) {
                     <div className="w-3/4 ml-20 mr-auto">
                         <div className="flex justify-between h-36">
                             <div className="flex items-center">
-                                <img src={profileIcon} className="w-32 h-32" alt="example" />
+                                <img
+                                    src={profileIcon}
+                                    className="w-32 h-32"
+                                    alt="example"
+                                />
                                 <p className="ml-12 text-2xl">本間由樹</p>
                             </div>
                             <div className="flex items-center mr-20">
-                                <button className="tracking-widest scale-x-110 text-lg text-blue-500 px-4 h-12 border border-blue-500 rounded-3xl">
-                                    プロフィールを編集
-                                </button>
+                                <Link href={route("user_edit")} method="get">
+                                    <button className="tracking-widest scale-x-110 text-lg text-blue-500 px-4 h-12 border border-blue-500 rounded-3xl">
+                                        プロフィールを編集
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="w-3/4 ml-20 mt-4">
@@ -45,12 +50,28 @@ function User({ auth }) {
                             </p>
                         </div>
                     </div>
-                    <div className="mt-20 mb-10 w-1/2 ml-40 mr-auto flex justify-between">
-                        <div className={`${activeTab === 'likes' ? 'border-b-4 border-blue-500' : ''}`}>
-                            <button className="text-xl" onClick={() => setActiveTab('likes')}>自分の投稿</button>
+                    <div className="mt-20 mb-10 w-1/2 mx-auto flex justify-between">
+                        <div
+                            className={`${
+                                activeTab === "likes"
+                                    ? "border-b-2 border-blue-500"
+                                    : ""
+                            }`}
+                        >
+                            <button onClick={() => setActiveTab("likes")}>
+                                自分の投稿
+                            </button>
                         </div>
-                        <div className={`mr-12 ${activeTab === 'posts' ? 'border-b-4 border-blue-500' : ''}`}>
-                            <button className="text-xl" onClick={() => setActiveTab('posts')}>いいね一覧</button>
+                        <div
+                            className={`mr-12 ${
+                                activeTab === "posts"
+                                    ? "border-b-2 border-blue-500"
+                                    : ""
+                            }`}
+                        >
+                            <button onClick={() => setActiveTab("posts")}>
+                                いいね一覧
+                            </button>
                         </div>
                     </div>
                     <Content></Content>
@@ -75,4 +96,4 @@ function User({ auth }) {
     );
 }
 
-export default User
+export default User;

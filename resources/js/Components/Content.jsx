@@ -4,11 +4,14 @@ import {useImage} from 'react-image';
 
 function Content({ className = '', post, children, ...props }) {
 
-    const profileIcon = '/img/account.png';
-    const postImage = '/img/bird.png';
-    const nonLikeIcon = '/img/heart.png';
-    const likedIcon = '/img/liked.png';
-    const commentIcon = '/img/comment.png';
+    // const profileIcon = '/img/account.png';
+    const profileIcon = post.profile_image;
+    const postImage = post.post_image;
+    // const nonLikeIcon = '/img/heart.png';
+    // const likedIcon = '/img/liked.png';
+    // const commentIcon = '/img/comment.png';
+
+    const createdAt = new Date(post.created_at);
 
     return(
         <>
@@ -17,25 +20,24 @@ function Content({ className = '', post, children, ...props }) {
                     <div className="mx-20 flex justify-between">
                         <div className="flex items-center">
                             <img src={profileIcon} className="w-12 h-12" alt="example" />
-                            <p className="ml-4 text-lg">本間由樹</p>
+                            <p className="ml-4 text-lg">{post.name}</p>
                         </div>
                         <div className="flex self-center">
-                            <p>2021/07/21</p>
+                            <p>{createdAt.toDateString()}</p>
                         </div>
                     </div>
                     <div className="mt-8 mx-32">
                         <p>
-                            テキストテキストテキストテキストテキストテキストテキスト
-                            テキストテキストテキストテキストテキストテキストテキスト
-                            テキストテキストテキストテキストテキストテキストテキスト
-                            テキストテキストテキストテキストテキストテキストテキスト
+                            {post.text}
                         </p>
                         <img className="mt-8" src={postImage} alt="postImage" />
                     </div>
-                    <div className="mt-8 mx-32 flex items-center">
+                    
+                    {/* コメント数/いいね
+                        <div className="mt-8 mx-32 flex items-center">
                         <img className="ml-4 h-8 w-8" src={commentIcon} alt="" /><span>2</span>
                         <img className="ml-8 h-8 w-8" src={nonLikeIcon} alt="" /><span>1</span>
-                    </div>
+                    </div> */}
                 </div>
             </Link>
         </>

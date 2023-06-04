@@ -3,21 +3,26 @@ import { useState } from 'react';
 import SideMenu from '@/Components/SideMenu';
 import Content from '@/Components/Content';
 
-function PostList({ className = '', children, ...props }) {
+function PostList({auth, posts, className = '', children, ...props}) {
 
-    const [postInfoList, setPostInfoList] = useState({});
-    
+    const [postInfoList, setPostInfoList] = useState(posts);
+
+    console.log(postInfoList);
+    console.log(auth);
+
     return(
         <>
             <div className="flex">
-                <SideMenu></SideMenu>
+                <SideMenu auth={auth}></SideMenu>
                 <div className="w-3/4">
-                    <Content post={postInfoList}></Content>
-                    <Content post={postInfoList}></Content>
+                    {postInfoList.map((post, index) => (
+                        <Content post={post} key={post.id}></Content>
+                    ))}
                 </div>
             </div>
         </>
-    )
+    );
+
 }
 
 export default PostList
