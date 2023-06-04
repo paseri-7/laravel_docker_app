@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostListController;
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,9 +27,17 @@ use Inertia\Inertia;
 // });
 
 //一覧画面 ログインしていない場合は、ログイン画面に飛ばす。
-Route::get('/', function () {
-    return Inertia::render('PostList');
-})->middleware(['auth'])->name('post_list');
+Route::get('/', [PostListController::class, 'index'])
+->middleware(['auth'])
+->name('post_list');
+
+Route::post('/post', [PostController::class, 'index'])
+->middleware(['auth'])
+->name('post');
+
+// Route::get('/', function () {
+//     return Inertia::render('PostList');
+// })->middleware(['auth'])->name('post_list');
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
@@ -74,6 +84,10 @@ Route::get('like-lists', function () {
         ]
     ];
 });
+
+Route::get('detail', function() {
+    return Inertia::render('PostDetail');
+})->name('detail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

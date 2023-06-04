@@ -23,6 +23,9 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
+        console.log(data.email);
+        console.log(data.password);
+
         post(route("login"));
     };
 
@@ -108,7 +111,7 @@ export default function Login({ status, canResetPassword }) {
                             </Link>
                         )}
                         <div className="mt-4">
-                            <PrimaryButton disabled={processing}>
+                            <PrimaryButton disabled={processing} >
                                 ログイン
                             </PrimaryButton>
                         </div>
