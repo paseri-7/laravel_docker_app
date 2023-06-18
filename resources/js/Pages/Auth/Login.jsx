@@ -46,7 +46,7 @@ export default function Login({ status, canResetPassword }) {
                         Vwitter
                     </h1>
                     <p className="mt-4 text-2xl">
-                        Twitterのパクリアプリケーションへようこそ！
+                        Twitterのパクリアプリケーションへようこそ!!!
                     </p>
                     <div>
                         <InputLabel htmlFor="email" value="Email" />
