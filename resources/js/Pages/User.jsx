@@ -6,10 +6,12 @@ import { useState, useEffect } from "react";
 import Content from "@/Components/Content";
 
 function User({ auth }) {
-    const profileIcon = "/img/account.png";
+    // const profileIcon = "/img/account.png";
     // モーダル表示/非表示フラグ
     const [modalFlg, setModalFlg] = useState(false);
     const [activeTab, setActiveTab] = useState("posts");
+    
+    console.log(auth);
 
     function showModal() {
         if (!modalFlg) {
@@ -28,11 +30,12 @@ function User({ auth }) {
                         <div className="flex justify-between h-36">
                             <div className="flex items-center">
                                 <img
-                                    src={profileIcon}
+                                    // src={profileIcon}
                                     className="w-32 h-32"
                                     alt="example"
                                 />
-                                <p className="ml-12 text-2xl">本間由樹</p>
+                                <p className="ml-12 text-2xl">{auth.user.name}さん</p>
+                                {/* <p>おかえりなさい。{auth.user.name}さん</p> */}
                             </div>
                             <div className="flex items-center mr-20">
                                 <Link href={route("user_edit")} method="get">

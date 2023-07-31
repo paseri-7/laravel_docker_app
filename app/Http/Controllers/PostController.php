@@ -27,7 +27,8 @@ class PostController extends Controller
             $image = null;
         }
 
-        $postServices->createPost($text, $image, $user_id);
+        // $postServices->createPost($text, $image, $user_id);
+        $postServices->createPost($text,$user_id);
         
         return response()->json(['message' => '投稿が作成されました']);
     }

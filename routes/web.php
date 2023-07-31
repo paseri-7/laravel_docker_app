@@ -5,6 +5,7 @@ use App\Http\Controllers\PostListController;
 use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 use Inertia\Inertia;
 
 /*
@@ -27,13 +28,25 @@ use Inertia\Inertia;
 // });
 
 //一覧画面 ログインしていない場合は、ログイン画面に飛ばす。
-Route::get('/', [PostListController::class, 'index'])
-->middleware(['auth'])
-->name('post_list');
+// Route::get('/', function () {
+//     return Inertia::render('PostList');
+// })->middleware(['auth'])->name('post_list');
+
+Route::get('/', function () {
+    $posts = Post::all(); // または適切な方法でデータを取得
+
+    return Inertia::render('PostList', [
+        'posts' => $posts,
+    ]);
+})->middleware(['auth'])->name('post_list');
+
+
+// Route::get('/', [PostListController::class, 'index'])
+// ->middleware(['auth'])
+// ->name('post_list');
 
 Route::post('/post', [PostController::class, 'index'])
-->middleware(['auth'])
-->name('post');
+->middleware(['auth'])->name('post');
 
 // Route::get('/', function () {
 //     return Inertia::render('PostList');
@@ -63,7 +76,7 @@ Route::post('/post', [PostController::class, 'index'])
 
 Route::get('/user', function () {
     return Inertia::render('User');
-})->name('user');
+})->middleware(['auth'])->name('user');
 
 Route::get('/user_edit', function () {
     return Inertia::render('User_edit');

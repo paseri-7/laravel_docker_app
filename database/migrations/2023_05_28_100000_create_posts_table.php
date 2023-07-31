@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->string('id')->nullable()->comment('ツイートid');
+            $table->id()->comment('ツイートid');
             //usersテーブルにおけるidの外部キー
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('text', 255)->nullable()->comment('テキストコンテンツ');
-            $table->string('post_image', 255)->nullable()->comment('画像コンテンツ');
+            // $table->string('post_image', 255)->nullable()->comment('画像コンテンツ');
             $table->integer('parent_tweet_id')->nullable()->comment('元ツイートid');
             $table->timestamp('created_at')->nullable()->comment('ツイート作成日');
             $table->timestamp('updated_at')->nullable()->comment('ツイート更新日');

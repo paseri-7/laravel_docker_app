@@ -16,7 +16,7 @@ function PostList({auth, posts, className = '', children, ...props}) {
                 <SideMenu auth={auth}></SideMenu>
                 <div className="w-3/4">
                     {postInfoList.map((post, index) => (
-                        <Content post={post} key={post.id}></Content>
+                        <Content auth={auth} post={post} key={post.id}></Content>
                     ))}
                 </div>
             </div>

@@ -37,7 +37,7 @@ export default function Register() {
                         Vwitter
                     </h1>
                     <p className="mt-4 text-2xl">
-                        Twitterのパクリアプリケーションへようこそ！
+                        簡易掲示板へようこそ！
                     </p>
 
                     {/* ユーザ名 */}
@@ -146,14 +146,14 @@ export default function Register() {
                     </div>
 
                     {/* ボタン部 */}
-                    <div className="flex items-center justify-end mt-4">
+                    <div className="flex justify-center mt-4">
                         <Link
                             href={route("login")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="m-4 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             ログイン画面へ
                         </Link>
-                        <PrimaryButton className="ml-4" disabled={processing}>
+                        <PrimaryButton className="m-4" disabled={processing}>
                             新規登録
                         </PrimaryButton>
                     </div>
